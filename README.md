@@ -1,4 +1,4 @@
-# SC - 401: Microsoft Certified Information Security Administrator Associate
+# SC-401: Information Security Administrator Associate
 
 * As an Information Security Administrator, you plan and implement information security of sensitive data by using Microsoft Purview and related services.
 ## Review Sections:
