@@ -1,0 +1,307 @@
+{
+  "main": {
+    "id": "5ed9e36bc62314ac",
+    "type": "split",
+    "children": [
+      {
+        "id": "72eb3fd94c5377c0",
+        "type": "split",
+        "children": [
+          {
+            "id": "7cdbfccf0427a1e7",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "d10b036b9256917b",
+                "type": "leaf",
+                "state": {
+                  "type": "graph",
+                  "state": {},
+                  "icon": "lucide-git-fork",
+                  "title": "Graph view"
+                }
+              },
+              {
+                "id": "f903db5f743981bf",
+                "type": "leaf",
+                "state": {
+                  "type": "terminal:documentation",
+                  "state": {
+                    "terminal:documentation": {
+                      "data": "# Terminal for Obsidian [![release](https://img.shields.io/github/v/release/polyipseity/obsidian-terminal)][latest release] [![Obsidian downloads](https://img.shields.io/badge/dynamic/json?logo=Obsidian&color=%238b6cef&label=downloads&query=$[\"terminal\"].downloads&url=https://raw.githubusercontent.com/obsidianmd/obsidian-releases/master/community-plugin-stats.json)][community plugin] [![Python](https://img.shields.io/badge/Python-≥3.10-gold?labelColor=blue&logo=Python&logoColor=white)][Python]\n\n[Buy Me a Coffee]: https://buymeacoffee.com/polyipseity\n[Buy Me a Coffee/embed]: https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=polyipseity&button_colour=40DCA5&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00\n[Obsidian]: https://obsidian.md/\n[Python]: https://python.org/downloads/\n[changelog]: https://github.com/polyipseity/obsidian-terminal/blob/main/CHANGELOG.md\n[community plugin]: https://obsidian.md/plugins?id=terminal\n[latest release]: https://github.com/polyipseity/obsidian-terminal/releases/latest\n[other things]: https://github.com/polyipseity/obsidian-monorepo\n[plugin library]: https://github.com/polyipseity/obsidian-plugin-library\n[repository]: https://github.com/polyipseity/obsidian-terminal\n[trailer]: https://raw.githubusercontent.com/polyipseity/obsidian-terminal/main/assets/trailer.png\n\nIntegrate consoles, shells, and terminals inside [Obsidian].\n\n[![Buy Me a Coffee/embed]][Buy Me a Coffee]\n\n__[Repository] · [Changelog] · [Community plugin] · [Other things] · [Features](#features) · [Installation](#installation) · [Usage](#usage) · [Contributing](#contributing) · [Security](#security)__\n\n![Trailer]\n\nFor first time users, read the [installation](#installation) section first!\n\nThis file is automatically opened on first install. You can reopen it in settings or command palette.\n\n## Features\n\n- Start external terminals from Obsidian.\n- Integrate terminals into Obsidian.\n- Has an emulated developer console usable on all platforms.\n- Supports multiple terminal profiles.\n- Has built-in keyboard shortcuts.\n- Automatically save and restore integrated terminal history.\n- Find in terminal.\n- Save terminal history as file.\n- Customize terminal appearance.\n\n## Installation\n\n1. Install plugin.\n    - Community plugins\n        1. Install the [plugin][community plugin] from community plugins directly.\n    - Manual\n        1. Create directory `terminal` under `.obsidian/plugins` of your vault.\n        2. Place `manifest.json`, `main.js`, and `styles.css` from the [latest release] into the directory.\n    - Building (latest)\n        1. Clone this repository, including its submodules.\n        2. Install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).\n        3. Run `npm install` in the root directory.\n        4. Run `npm run obsidian:install <vault directory>` in the root directory.\n    - [Obsidian42 - BRAT](https://obsidian.md/plugins?id=obsidian42-brat) (latest)\n        - See [their readme](https://github.com/TfTHacker/obsidian42-brat#readme).\n2. (optional for Windows, recommended) Install Python and dependencies.\n    1. Install [Python] 3.10/+.\n    2. (Windows only) Run `pip3 install psutil==5.9.5 pywinctl==0.0.50 typing_extensions==4.7.1`. <!-- Update `README.md`, `magic.ts`, and `requirements.txt` together. -->\n    3. Configure Python executable in plugin settings. Press the \"Check\" button to validate the Python configuration.\n3. Enable plugin.\n4. (optional) Configure plugin settings.\n\n## Usage\n\n- To start a new external or integrated terminal\n  - Ribbon\n        1. Click on the `Open terminal` ribbon.\n        2. Choose the desired profile.\n  - Context menu\n        1. Right-click on files, folders, or tab headers.\n        2. Choose the desired action (and profile).\n  - Command palette\n        1. Press `Ctrl`+`P` or click on the `Open command palette` ribbon next to the left window border.\n        2. Choose the desired action (and profile).\n- To save and restore integrated terminal history\n    1. Keep the terminal open when exiting Obsidian.\n    2. Terminal history will be restored next time Obsidian is opened.\n- Additional actions\n  - Includes\n    - Find in terminal: (1), (4)\n    - Clear terminal: (1), (4)\n    - Restart terminal: (1)\n    - Edit terminal: (1)\n    - Save terminal history as file: (1)\n    - Export, import, or edit settings: (2), (3)\n    - Open documentation: (2), (3)\n  - Available by\n    - (1) Right-click on tab header/`More options`\n    - (2) Open settings\n    - (3) Open command palette\n    - (4) Use keyboard shortcuts\n\n### Keyboard shortcuts\n\nThe keyboard shortcuts are not customizable for now.\n\n<!-- markdownlint-disable-next-line MD036 -->\n__Terminal tab is focused__\n\n- Focus: `Ctrl`+`Shift`+`` ` ``\n- Inherits global keyboard shortcuts\n\n<!-- markdownlint-disable-next-line MD036 -->\n__Terminal is focused__\n\n- Clear: `Ctrl`+`Shift`+`K`, `Command`+`K` (Apple)\n- Close: `Ctrl`+`Shift`+`W`, `Command`+`W` (Apple)\n- Find: `Ctrl`+`Shift`+`F`, `Command`+`F` (Apple)\n- Toggle focus: `Ctrl`+`Shift`+`` ` ``\n\n### Theming\n\nTheming is possible. However, there is no user-friendly interface for now.\n\n1. Open the profile editing modal.\n2. Click on the `Edit` button labeled `Data`. It should open up a new modal in which there is a large textbox.\n3. Notice `terminalOptions` in the text area labeled `Data`. Refer to the [`xterm.js` documentation](https://github.com/xtermjs/xterm.js/blob/master/typings/xterm.d.ts#L26) (`ITerminalOptions`) to set the options. Nested objects may need to be used.\n4. Save the profile. Changes should apply immediately.\n\n### Profiles\n\nThis plugin comes with several profile presets that you can reference.\n\nWhen setting up a terminal profile, you need to distinguish between shells and terminal emulators. (Search online if needed.) Generally, integrated profiles only work with shells while external ones only work with terminal emulators.\n\n#### Examples\n\n<!-- markdownlint-disable-next-line MD036 -->\n__Shells__\n\n- Bash: `bash`\n- Bourne shell: `sh`\n- Command Prompt: `cmd`\n- Dash: `dash`\n- Git Bash: `<Git installation>\\bin\\bash.exe` (e.g. `C:\\Program Files\\Git\\bin\\bash.exe`)\n- PowerShell Core: `pwsh`\n- Windows PowerShell: `powershell`\n- Windows Subsystem for Linux: `wsl` or `wsl -d <distribution name>`\n- Z shell: `zsh`\n\n<!-- markdownlint-disable-next-line MD036 -->\n__Terminal emulators__\n\n- Command Prompt: `cmd`\n- GNOME Terminal: `gnome-terminal`\n- Konsole: `konsole`\n- Terminal (macOS): `/System/Applications/Utilities/Terminal.app/Contents/macOS/Terminal \"$PWD\"`\n- Windows Terminal: `wt`\n- iTerm2: `/Applications/iTerm.app/Contents/MacOS/iTerm2 \"$PWD\"`\n- xterm: `xterm`\n\n### Miscellaneous\n\nThis plugin patches `require` so that `require(\"obsidian\")` and other Obsidian modules work in the developer console. It is toggleable as `Expose internal modules` in settings.\n\nIn the developer console, a context variable `$$` is passed into the code, which can be used to dynamically change terminal options.\n\nThe full API is available from [`sources/@types/obsidian-terminal.ts`](sources/%40types/obsidian-terminal.ts).\n\n### Troubleshooting\n\n- Is the plugin useful on mobile?\n  - Compared to on desktop, it is much less useful. The only use for it for now is opening a developer console on mobile.\n- Why do hotkeys not work?\n  - If the terminal is in focus, all Obsidian hotkeys are disabled so that you can type special characters into the terminal. You can unfocus the terminal by pressing `Ctrl`+`Shift`+`` ` ``, then you can use Obsidian hotkeys again.\n\n## Contributing\n\nContributions are welcome!\n\nThis project uses [`changesets`](https://github.com/changesets/changesets) to manage the changelog. When creating a pull request, please [add a changeset](https://github.com/changesets/changesets/blob/main/docs/intro-to-using-changesets.md#adding-changesets) describing the changes. Add multiple changesets if your pull request changes several things. End each changeset with `([PR number](PR link) by [author username](author link))`. For example, the newly created file under the directory `.changeset` should look like:\n\n```Markdown\n---\n\"example\": patch\n---\n\nThis is an example change. ([GH#1](https://github.com/ghost/example/pull/1) by [@ghost](https://github.com/ghost))\n```\n\n### Todos\n\nThe todos here, ordered alphabetically, are things planned for the plugin. There are no guarantees that they will be completed. However, we are likely to accept contributions for them.\n\n- Connect to remote shells.\n- Copy terminal tabs.\n- Create ad-hoc profile in `Open terminal: Select`.\n- Detect sandboxed environment and notify users.\n- Edit profile before opening terminal in `Open terminal: Select` when a modifier key is pressed.\n- External link confirmation.\n- Filter console log by severity in the developer console.\n- Fix broken section links in builtin documentations.\n- Indicate that the terminal resizer has crashed or is disabled.\n- Shared terminal tabs.\n- Vim mode switch.\n\n### Translating\n\nTranslation files are under [`assets/locales/`](assets/locales/). Each locale has its own directory named with its corresponding __[IETF language tag](https://wikipedia.org/wiki/IETF_language_tag)__. Some translation keys are missing here and instead located at [`obsidian-plugin-library`][plugin library].\n\nTo contribute translation for an existing locale, modify the files in the corresponding directory.\n\nFor a new locale, create a new directory named with its language tag and copy [`assets/locales/en/translation.json`](assets/locales/en/translation.json) into it. Then, add an entry to [`assets/locales/en/language.json`](assets/locales/en/language.json) in this format:\n\n```JSONc\n{\n    // ...\n    \"en\": \"English\",\n    \"(your-language-tag)\": \"(Native name of your language)\",\n    \"uwu\": \"Uwuish\",\n    // ...\n}\n```\n\nSort the list of languages by the alphabetical order of their language tags. Then modify the files in the new directory. There will be errors in [`assets/locales.ts`](assets/locales.ts), which you can ignore and we will fix them for you. You are welcome to fix them yourself if you know TypeScript.\n\nWhen translating, keep in mind the following things:\n\n- Do not translate anything between `{{` and `}}` (`{{example}}`). They are __interpolations__ and will be replaced by localized strings at runtime.\n- Do not translate anything between `$t(` and `)` (`$t(example)`). They refer to other localized strings. To find the localized string being referred to, follow the path of the key, which is separated by dots (`.`). For example, the key [`youtu.be./dQw4w9WgXcQ`](https://youtu.be./dQw4w9WgXcQ) refers to:\n\n```JSONc\n{\n    // ...\n    \"youtu\": {\n        // ...\n        \"be\": {\n            // ...\n            \"/dQw4w9WgXcQ\": \"I am 'youtu.be./dQw4w9WgXcQ'!\",\n            // ...\n        },\n        // ...\n    },\n    // ...\n}\n```\n\n- The keys under `generic` are vocabularies. They can be referred in translation strings by `$t(generic.key)`. Refer to them as much as possible to standardize translations for vocabularies that appear in different places.\n- It is okay to move interpolations and references to other localized strings around to make the translation natural. It is also okay to not use some references used in the original translation. However, it is NOT okay to not use all interpolations.\n\n## Security\n\nWe hope that there will never be any security vulnerabilities, but unfortunately it does happen. Please [report](#reporting-a-vulnerability) them!\n\n### Supported versions\n\n| Version | Supported |\n|-|-|\n| latest | ✅ |\n| outdated | ❌ |\n\n### Reporting a vulnerability\n\nPlease report a vulerability by opening an new issue. We will get back to you as soon as possible.\n",
+                      "displayTextI18nKey": "translation:generic.documentations.readme",
+                      "iconI18nKey": "asset:generic.documentations.readme-icon"
+                    }
+                  },
+                  "icon": "file-question",
+                  "title": "Readme"
+                }
+              },
+              {
+                "id": "97563cd41f00bb36",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "README.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "README"
+                }
+              },
+              {
+                "id": "5b233115d5072104",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "README.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "README"
+                }
+              },
+              {
+                "id": "571e21b1d5fcf848",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "a.Main Contents/Implement Microsoft  Purview Information Protection.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "Implement Microsoft  Purview Information Protection"
+                }
+              }
+            ],
+            "currentTab": 4
+          },
+          {
+            "id": "26c18f8c41ad8460",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "5378b26bb981e564",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "/home/zaakceptowac/Documents/obsidian/sc-401_notes",
+                      "focus": false,
+                      "profile": {
+                        "args": [],
+                        "executable": "/bin/sh",
+                        "name": "",
+                        "platforms": {
+                          "linux": true
+                        },
+                        "pythonExecutable": "python3",
+                        "restoreHistory": true,
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "useWin32Conhost": true
+                      },
+                      "serial": {
+                        "columns": 122,
+                        "data": "$ zsh\r\n\r\n\u001b[1m ________________________________________\u001b[5C\u001b[0m         \u001b[37;1mzaakceptowac\u001b[0m@\u001b[37;1mtits\r\n\u001b[39m/ Q: What's the difference between Bell  \\\u001b[4C\u001b[0m ─────────────────────────── \r\n\u001b[1m| Labs and the Boy Scouts of America? A: |\u001b[4C\u001b[33m \u001b[0m -> Linux 6.12.25-amd64\r\n\u001b[1m\\ The Boy Scouts have adult supervision. /\u001b[4C\u001b[34m \u001b[0m -> Hyprland Hyprland (Wayland)\r\n\u001b[1m ----------------------------------------\u001b[5C\u001b[33m \u001b[0m -> zsh 5.9\r\n\u001b[1m  \\            .    .     .   \u001b[16C\u001b[34m \u001b[0m -> python3\r\n\u001b[1m   \\      .  . .     `  ,     \u001b[16C\u001b[35m󰍛 \u001b[0m -> 9.19 GiB / 15.50 GiB\r\n\u001b[1m    \\    .; .  : .' :  :  : . \u001b[16C\u001b[32m󰔛 \u001b[0m -> 8 hours, 49 mins\r\n\u001b[1m     \\   i..`: i` i.i.,i  i . \u001b[16C\u001b[0m ─────────────────────────── \r\n\u001b[1m      \\   `,--.|i |i|ii|ii|i: \u001b[16C\u001b[0m   \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[90m \r\n\u001b[39;1m           UooU\\.'@@@@@@`.||' \r\n           \\__/(@@@@@@@@@@)'  \r\n                (@@@@@@@@)    \r\n                `YY~~~~YY'    \r\n                 ||    ||     \r\n\r\n\u001b[34m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:39\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m rm -r --cached                                                      \r\nfatal: No pathspec was given. Which files should I remove?\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:39\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m rm -r --cached \u001b[4m.\r\n\u001b[0mrm '.gitignore'\r\nrm '.obsidian/app.json'\r\nrm '.obsidian/appearance.json'\r\nrm '.obsidian/community-plugins.json'\r\nrm '.obsidian/core-plugins.json'\r\nrm '.obsidian/graph.json'\r\nrm '.obsidian/plugins/obsidian-git/data.json'\r\nrm '.obsidian/plugins/obsidian-git/main.js'\r\nrm '.obsidian/plugins/obsidian-git/manifest.json'\r\nrm '.obsidian/plugins/obsidian-git/obsidian_askpass.sh'\r\nrm '.obsidian/plugins/obsidian-git/styles.css'\r\nrm '.obsidian/plugins/terminal/data.json'\r\nrm '.obsidian/plugins/terminal/main.js'\r\nrm '.obsidian/plugins/terminal/manifest.json'\r\nrm '.obsidian/plugins/terminal/styles.css'\r\nrm '.obsidian/workspace.json'\r\nrm 'README.md'\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:40\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m add \u001b[4m.\u001b[0m           \r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:40\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mls\r\n\u001b[34m \u001b[1m.git\u001b[0m   .gitignore  \u001b[34m \u001b[1m.obsidian\u001b[0m  \u001b[34m \u001b[1ma.Labs\u001b[0m  \u001b[34m \u001b[1m'a.Main Contents'\u001b[0m  \u001b[33m󰂺 \u001b[1;4mREADME.md\u001b[0m  \u001b[34m \u001b[1mz.attachments\r\n┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:40\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m commit -m \u001b[33m\"removed cached\"\r\n\u001b[0m[main 4be690b] removed cached\r\n 15 files changed, 1858 deletions(-)\r\n delete mode 100644 .obsidian/app.json\r\n delete mode 100644 .obsidian/appearance.json\r\n delete mode 100644 .obsidian/community-plugins.json\r\n delete mode 100644 .obsidian/core-plugins.json\r\n delete mode 100644 .obsidian/graph.json\r\n delete mode 100644 .obsidian/plugins/obsidian-git/data.json\r\n delete mode 100644 .obsidian/plugins/obsidian-git/main.js\r\n delete mode 100644 .obsidian/plugins/obsidian-git/manifest.json\r\n delete mode 100755 .obsidian/plugins/obsidian-git/obsidian_askpass.sh\r\n delete mode 100644 .obsidian/plugins/obsidian-git/styles.css\r\n delete mode 100644 .obsidian/plugins/terminal/data.json\r\n delete mode 100644 .obsidian/plugins/terminal/main.js\r\n delete mode 100644 .obsidian/plugins/terminal/manifest.json\r\n delete mode 100644 .obsidian/plugins/terminal/styles.css\r\n delete mode 100644 .obsidian/workspace.json\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:40\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m push origin main          \r\nTo github.com:0xzaakceptowac/sc-401_notes.git\r\n \u001b[31m! [rejected]       \u001b[0m main -> main (fetch first)\r\n\u001b[31merror: failed to push some refs to 'github.com:0xzaakceptowac/sc-401_notes.git'\r\n\u001b[33mhint: Updates were rejected because the remote contains work that you do not\r\nhint: have locally. This is usually caused by another repository pushing to\r\nhint: the same ref. If you want to integrate the remote changes, use\r\nhint: 'git pull' before pushing again.\r\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:40\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m push origin main --force\r\nEnumerating objects: 36, done.\r\nCounting objects: 100% (36/36), done.\r\nDelta compression using up to 8 threads\r\nCompressing objects: 100% (32/32), done.\r\nWriting objects: 100% (36/36), 684.94 KiB | 6.23 MiB/s, done.\r\nTotal 36 (delta 4), reused 3 (delta 0), pack-reused 0 (from 0)\r\nremote: Resolving deltas: 100% (4/4), done.\r\nTo github.com:0xzaakceptowac/sc-401_notes.git\r\n + 53552bb...4be690b main -> main (forced update)\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:41\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m pull\r\nAlready up to date.\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:41\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m push origin main        \r\nEverything up-to-date\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:41\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m add \u001b[4ma.Labs\u001b[0m      \r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:41\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m commit -m \u001b[33m\"folder\"\u001b[0m        \r\nOn branch main\r\nYour branch is up to date with 'origin/main'.\r\n\r\nnothing to commit, working tree clean\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:41\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m check-ignore -v \u001b[4ma.Labs\r\n\r\n\u001b[34;1;24m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:42\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m check-ignore -v \u001b[4ma.Labs\r\n\r\n\u001b[34;1;24m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:42\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m check-ignore -v       \r\n\r\nfatal: no path specified\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:43\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m check-ignore -v \u001b[4m.obsidian\r\n\r\n\u001b[0m.gitignore:1:.obsidian/\u001b[1C.obsidian\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:43\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m check-ignore -v \u001b[4ma.Labs\u001b[0m   \r\n\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:43\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m add \u001b[4ma.Labs\u001b[0m            \r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:43\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m status          \r\nOn branch main\r\nYour branch is up to date with 'origin/main'.\r\n\r\nnothing to commit, working tree clean\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:43\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mls\u001b[0m -la                    \r\n\u001b[34;1md\u001b[33mr\u001b[31mw\u001b[32mx\u001b[33;22mr\u001b[31mw\u001b[32mx\u001b[33mr\u001b[90;1m-\u001b[32;22mx\u001b[0m    \u001b[90;1m-\u001b[0m \u001b[33;1mzaakceptowac\u001b[0m \u001b[34m13 Jun 00:39\u001b[0m \u001b[34m \u001b[1m.\r\nd\u001b[33mr\u001b[31mw\u001b[32mx\u001b[33;22mr\u001b[31mw\u001b[32mx\u001b[33mr\u001b[90;1m-\u001b[32;22mx\u001b[0m    \u001b[90;1m-\u001b[0m \u001b[33;1mzaakceptowac\u001b[0m \u001b[34m12 Jun 23:08\u001b[0m \u001b[34m \u001b[1m..\r\nd\u001b[33mr\u001b[31mw\u001b[32mx\u001b[33;22mr\u001b[31mw\u001b[32mx\u001b[33mr\u001b[90;1m-\u001b[32;22mx\u001b[0m    \u001b[90;1m-\u001b[0m \u001b[33;1mzaakceptowac\u001b[0m \u001b[34m13 Jun 00:43\u001b[0m \u001b[34m \u001b[1m.git\r\n\u001b[0m.\u001b[33;1mr\u001b[31mw\u001b[90m-\u001b[33;22mr\u001b[31mw\u001b[90;1m-\u001b[33;22mr\u001b[90;1m--\u001b[0m   \u001b[32m11\u001b[0m \u001b[33;1mzaakceptowac\u001b[0m \u001b[34m13 Jun 00:25\u001b[0m  .gitignore\r\n\u001b[34;1md\u001b[33mr\u001b[31mw\u001b[32mx\u001b[33;22mr\u001b[31mw\u001b[32mx\u001b[33mr\u001b[90;1m-\u001b[32;22mx\u001b[0m    \u001b[90;1m-\u001b[0m \u001b[33;1mzaakceptowac\u001b[0m \u001b[34m12 Jun 23:46\u001b[0m \u001b[34m \u001b[1m.obsidian\r\nd\u001b[33mr\u001b[31mw\u001b[32mx\u001b[33;22mr\u001b[31mw\u001b[32mx\u001b[33mr\u001b[90;1m-\u001b[32;22mx\u001b[0m    \u001b[90;1m-\u001b[0m \u001b[33;1mzaakceptowac\u001b[0m \u001b[34m13 Jun 00:17\u001b[0m \u001b[34m \u001b[1ma.Labs\r\nd\u001b[33mr\u001b[31mw\u001b[32mx\u001b[33;22mr\u001b[31mw\u001b[32mx\u001b[33mr\u001b[90;1m-\u001b[32;22mx\u001b[0m    \u001b[90;1m-\u001b[0m \u001b[33;1mzaakceptowac\u001b[0m \u001b[34m13 Jun 00:17\u001b[0m \u001b[34m \u001b[1m'a.Main Contents'\r\n\u001b[0m.\u001b[33;1mr\u001b[31mw\u001b[90m-\u001b[33;22mr\u001b[31mw\u001b[90;1m-\u001b[33;22mr\u001b[90;1m--\u001b[0m \u001b[32;1m5.5k\u001b[0m \u001b[33;1mzaakceptowac\u001b[0m \u001b[34m13 Jun 00:31\u001b[0m \u001b[33m󰂺 \u001b[1;4mREADME.md\r\n\u001b[34;24md\u001b[33mr\u001b[31mw\u001b[32mx\u001b[33;22mr\u001b[31mw\u001b[32mx\u001b[33mr\u001b[90;1m-\u001b[32;22mx\u001b[0m    \u001b[90;1m-\u001b[0m \u001b[33;1mzaakceptowac\u001b[0m \u001b[34m13 Jun 00:16\u001b[0m \u001b[34m \u001b[1mz.attachments\r\n┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:43\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main)>\u001b[0m \u001b[32mgit\u001b[0m add -f \u001b[4m.\u001b[0m  \r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:44\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m status  \r\nOn branch main\r\nYour branch is up to date with 'origin/main'.\r\n\r\nChanges to be committed:\r\n  (use \"git restore --staged <file>...\" to unstage)\r\n\u001b[8C\u001b[32mnew file:   .obsidian/app.json\r\n\u001b[8Cnew file:   .obsidian/appearance.json\r\n\u001b[8Cnew file:   .obsidian/community-plugins.json\r\n\u001b[8Cnew file:   .obsidian/core-plugins.json\r\n\u001b[8Cnew file:   .obsidian/graph.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/data.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/main.js\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/manifest.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/obsidian_askpass.sh\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/styles.css\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/data.json\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/main.js\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/manifest.json\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/styles.css\r\n\u001b[8Cnew file:   .obsidian/workspace.json\r\n\r\n\u001b[0mChanges not staged for commit:\r\n  (use \"git add <file>...\" to update what will be committed)\r\n  (use \"git restore <file>...\" to discard changes in working directory)\r\n\u001b[8C\u001b[31mmodified:   .obsidian/workspace.json\r\n\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:44\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m rm -r --cached            \r\nfatal: No pathspec was given. Which files should I remove?\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:44\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m rm -r --cached\r\nfatal: No pathspec was given. Which files should I remove?\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:44\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m status        \r\nOn branch main\r\nYour branch is up to date with 'origin/main'.\r\n\r\nChanges to be committed:\r\n  (use \"git restore --staged <file>...\" to unstage)\r\n\u001b[8C\u001b[32mnew file:   .obsidian/app.json\r\n\u001b[8Cnew file:   .obsidian/appearance.json\r\n\u001b[8Cnew file:   .obsidian/community-plugins.json\r\n\u001b[8Cnew file:   .obsidian/core-plugins.json\r\n\u001b[8Cnew file:   .obsidian/graph.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/data.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/main.js\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/manifest.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/obsidian_askpass.sh\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/styles.css\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/data.json\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/main.js\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/manifest.json\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/styles.css\r\n\u001b[8Cnew file:   .obsidian/workspace.json\r\n\r\n\u001b[0mChanges not staged for commit:\r\n  (use \"git add <file>...\" to update what will be committed)\r\n  (use \"git restore <file>...\" to discard changes in working directory)\r\n\u001b[8C\u001b[31mmodified:   .obsidian/workspace.json\r\n\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:45\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m restore                                                             \r\nfatal: you must specify path(s) to restore\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:45\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m restore \u001b[4m.\r\n\u001b[34;1;24m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:45\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m status   \r\nOn branch main\r\nYour branch is up to date with 'origin/main'.\r\n\r\nChanges to be committed:\r\n  (use \"git restore --staged <file>...\" to unstage)\r\n\u001b[8C\u001b[32mnew file:   .obsidian/app.json\r\n\u001b[8Cnew file:   .obsidian/appearance.json\r\n\u001b[8Cnew file:   .obsidian/community-plugins.json\r\n\u001b[8Cnew file:   .obsidian/core-plugins.json\r\n\u001b[8Cnew file:   .obsidian/graph.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/data.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/main.js\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/manifest.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/obsidian_askpass.sh\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/styles.css\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/data.json\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/main.js\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/manifest.json\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/styles.css\r\n\u001b[8Cnew file:   .obsidian/workspace.json\r\n\r\n\u001b[0mChanges not staged for commit:\r\n  (use \"git add <file>...\" to update what will be committed)\r\n  (use \"git restore <file>...\" to discard changes in working directory)\r\n\u001b[8C\u001b[31mmodified:   .obsidian/workspace.json\r\n\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:45\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m restor \u001b[4m.obsidian/workspace.json\r\n\u001b[0mgit: 'restor' is not a git command. See 'git --help'.\r\n\r\nThe most similar commands are\r\n\u001b[8Crestore\r\n\u001b[8Cremote\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:46\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m restore \u001b[4m.obsidian/workspace.json\r\n\u001b[34;1;24m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:46\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m status                          \r\nOn branch main\r\nYour branch is up to date with 'origin/main'.\r\n\r\nChanges to be committed:\r\n  (use \"git restore --staged <file>...\" to unstage)\r\n\u001b[8C\u001b[32mnew file:   .obsidian/app.json\r\n\u001b[8Cnew file:   .obsidian/appearance.json\r\n\u001b[8Cnew file:   .obsidian/community-plugins.json\r\n\u001b[8Cnew file:   .obsidian/core-plugins.json\r\n\u001b[8Cnew file:   .obsidian/graph.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/data.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/main.js\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/manifest.json\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/obsidian_askpass.sh\r\n\u001b[8Cnew file:   .obsidian/plugins/obsidian-git/styles.css\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/data.json\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/main.js\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/manifest.json\r\n\u001b[8Cnew file:   .obsidian/plugins/terminal/styles.css\r\n\u001b[8Cnew file:   .obsidian/workspace.json\r\n\r\n\u001b[0mChanges not staged for commit:\r\n  (use \"git add <file>...\" to update what will be committed)\r\n  (use \"git restore <file>...\" to discard changes in working directory)\r\n\u001b[8C\u001b[31mmodified:   .obsidian/workspace.json\r\n\r\n\u001b[0mUntracked files:\r\n  (use \"git add <file>...\" to include in what will be committed)\r\n\u001b[8C\u001b[31ma.Labs/\r\n\u001b[8Ca.Main Contents/\r\n\r\n\u001b[34;1m┌─[\u001b[32mzaakceptowac\u001b[30m@\u001b[36;22mtits\u001b[34;1m]\u001b[0m - \u001b[34;1m[\u001b[37m~/Documents/obsidian/sc-401_notes\u001b[34m]\u001b[0m - \u001b[34;1m[\u001b[33;22mFri Jun 13, 00:46\u001b[34;1m]\r\n└─[\u001b[35m$\u001b[34m] <git:(main*)>\u001b[0m \u001b[32mgit\u001b[0m add \u001b[90m-f .\u001b[4D\u001b[0m",
+                        "rows": 19
+                      }
+                    }
+                  },
+                  "pinned": true,
+                  "icon": "terminal",
+                  "title": "Terminal: zaakceptowac@tits:~/Documents/obsidian/sc-401_notes"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "614fad90d1951086",
+    "type": "split",
+    "children": [
+      {
+        "id": "51b25d321e44e9d1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e28e291514a571fb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "f59b09019ce76b95",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "d03f9950c48b5679",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 244.5
+  },
+  "right": {
+    "id": "755172fe659e8fbf",
+    "type": "split",
+    "children": [
+      {
+        "id": "c0be70656dec5ff5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f09fc01bfd53ed84",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for README"
+            }
+          },
+          {
+            "id": "1910099d27f1a759",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "48429988829fe56a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "e84988014413f12a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Welcome.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Welcome"
+            }
+          },
+          {
+            "id": "a74837794ccddd5d",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-git:Open Git source control": false,
+      "terminal:Open terminal": false
+    }
+  },
+  "active": "5378b26bb981e564",
+  "lastOpenFiles": [
+    "a.Main Contents/Implement Microsoft  Purview Information Protection.md",
+    "README.md",
+    "a.Labs/Untitled.md",
+    "Untitled.md",
+    "Untitled 1.md",
+    "a.Labs",
+    "a.Main Contents",
+    "z.attachments",
+    "sc-401_notes/README.md",
+    "sc-401_notes",
+    "Welcome.md"
+  ]
+}
