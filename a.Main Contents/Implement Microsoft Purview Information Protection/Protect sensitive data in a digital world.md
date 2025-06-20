@@ -42,8 +42,6 @@
 - Enforce automatic retention or deletion of data based on compliance requirements.
 - Monitor and analyze policy violations to improve security strategies.
 
-
-
 # Mitigation strategies
 ## Microsoft Purview Insider Risk Management
 - Detect unusual file access, data transfers, and security violations.
@@ -85,10 +83,7 @@ Sec team can:
 ## Microsoft Defender XDR
 * provides a unified threat detection and response capability by correlating security signals from multiple sources.
 
-# AI
-
-## Use Data Security Posture Management (DSPM) for AI to enforce security policies and manage AI-related risks.
-
-## Implement **AI governance policies** to define acceptable AI-generated content.
-
-## **Implement Data Loss Prevention (DLP) policies** to prevent unauthorized data from being used in AI tools.
+# Use of AI
+* Use Data Security Posture Management (DSPM) for AI to enforce security policies and manage AI-related risks.
+* Implement **AI governance policies** to define acceptable AI-generated content.
+* **Implement Data Loss Prevention (DLP) policies** to prevent unauthorized data from being used in AI tools.

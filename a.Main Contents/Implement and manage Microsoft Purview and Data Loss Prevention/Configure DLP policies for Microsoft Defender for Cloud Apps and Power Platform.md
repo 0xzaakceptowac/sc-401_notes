@@ -1,0 +1,4 @@
+While data loss prevention (DLP) policies in the Microsoft Purview compliance portal protect data in Microsoft 365 services from being shared, DLP policies in Power Platform are used to restrict the communication between connectors. A connector in Power Platform is a wrapper or an API that allows predefined triggers and actions to access the data behind it.
+
+Connectors can reside in only one group at a time. For example, the SharePoint Online connector can only be part of the business group or the non-business group and not both at the same time. By moving the SharePoint Online and another non-Microsoft connector to the Business group, you're preventing users from creating flows and apps that combine these two connectors with any of the connectors in the Non-Business or Blocked groups without affecting the existing workflows that use both SharePoint Online connectors.
+
